@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anji Bio | AutoFill Demo</title>
+  <link rel="stylesheet" href="script.js" />
+</head>
+<body>
+  <div class="container">
+    <h1>AutoFill Product Details</h1>
+
+    <div class="form-row">
+      <label>CAS Number</label>
+      <input type="text" id="casNumber" placeholder="Enter CAS Number" />
+      <button id="autoFillBtn">Auto Fill</button>
+    </div>
+
+    <div class="form-row"><label>Cas Number </label><input type="text" id="productName" /></div>
+    <div class="form-row"><label>Molecular Formula</label><input type="text" id="formula" /></div>
+    <div class="form-row"><label>Molecular Weight</label><input type="text" id="weight" /></div>
+    <div class="form-row"><label>Product Name</label><input type="text" id="iupac" /></div>
+    <div class="form-row"><label>Density</label><input type="text" id="density" /></div>
+
+    <div id="imagePreview" style="margin-top:20px;"></div>
+    <form id="uploadForm" enctype="multipart/form-data">
+  <label>Upload Product Image</label>
+  <input type="file" id="uploadFile" accept="image/*" />
+  <button type="submit">Add Image</button>
+</form>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
