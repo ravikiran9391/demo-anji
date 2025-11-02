@@ -6,7 +6,7 @@ document.getElementById("autoFillBtn").addEventListener("click", async () => {
   }
 
   try {
-    const res = await fetch("http://localhost:3000/api/fetch-compound", {
+    const res = await fetch("https://demo-anji.onrender.com/api/fetch-compound", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ cas }),
