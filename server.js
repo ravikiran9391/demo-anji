@@ -3,11 +3,13 @@ const path = require("path");
 const axios = require("axios");
 const multer = require("multer");
 const fs = require("fs");
+const cors = require("cors");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000; // ✅ Use Render’s port
 
-// Middleware
+// ✅ Middleware
+app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -35,8 +37,9 @@ app.post("/api/fetch-compound", async (req, res) => {
     const { cas } = req.body;
     if (!cas) return res.json({ success: false, message: "CAS number missing" });
 
-    // Fetch compound data from PubChem API
-    const response = await axios.get(`https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/${cas}/JSON`);
+    const response = await axios.get(
+      `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/${cas}/JSON`
+    );
 
     const compound = response.data.PC_Compounds?.[0];
     if (!compound) return res.json({ success: false, message: "Compound not found" });
@@ -46,7 +49,6 @@ app.post("/api/fetch-compound", async (req, res) => {
       return acc;
     }, {});
 
-    // ✅ Prepare structure image URL
     const imageUrl = `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/${cas}/PNG`;
 
     res.json({
